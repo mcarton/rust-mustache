@@ -57,7 +57,7 @@ impl<T: Iterator<Item=char>> Compiler<T> {
 
             if !self.partials.contains_key(&name) {
                 // Insert a placeholder so we don't recurse off to infinity.
-                self.partials.insert(name.to_string(), Vec::new());
+                self.partials.insert(name.clone(), Vec::new());
 
                 match File::open(&path) {
                     Ok(mut file) => {
