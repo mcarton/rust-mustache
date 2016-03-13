@@ -5,6 +5,16 @@
 
 #![allow(unused_attributes)]
 
+#![cfg_attr(feature="clippy", feature(plugin))]
+#![cfg_attr(feature="clippy", plugin(clippy))]
+
+// mustache has lots of those for historical reason
+#![cfg_attr(feature="clippy", allow(str_to_string))]
+// the convention is to use `iter`
+#![cfg_attr(feature="clippy", allow(explicit_iter_loop))]
+// has false positives
+#![cfg_attr(feature="clippy", allow(or_fun_call))]
+
 extern crate rustc_serialize;
 extern crate log;
 #[cfg(test)]extern crate tempdir;
